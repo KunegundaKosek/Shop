@@ -6,15 +6,19 @@ import ProductsPage from './pages/ProductsPage/ProductsPage';
 import AddNewProduct from './pages/AddNewProduct/AddNewProduct';
 import CartPage from './pages/CartPage/CartPage';
 import NotFound from './pages/NotFound/NotFound';
+import Nav from './components/Nav/Nav';
+import LoginPage from './pages/LoginPage/LoginPage';
 
 function App() {
     return (
         <div>
+            <Nav />
             <Routes>
                 <Route path='/' element={<HomePage />} />
-                <Route path='/products' element={<ProductsPage />} />
-                <Route path='/add-new-product' element={<AddNewProduct />} />
-                <Route path='/cart' element={<CartPage />} />
+                <Route path='/produkty' element={<ProductsPage />} />
+                <Route path='/dodaj-produkt' element={<AddNewProduct />} />
+                <Route path='/koszyk' element={<CartPage />} />
+                <Route path='/logowanie' element={<LoginPage />} />
                 <Route path='/*' element={<NotFound />} />
             </Routes>
         </div>
