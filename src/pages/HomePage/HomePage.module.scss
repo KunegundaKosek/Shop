@@ -1,0 +1,95 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+
+    &__bgcImg {
+        top: 0;
+        border-radius: 50%;
+        position: absolute;
+        z-index: -1;
+        opacity: 0.4;
+        // transform: rotate(35deg);
+        overflow: hidden;
+        height: 90vh;
+        // width: 100vw;
+
+        @media screen and (max-width: 768px) {
+            width: 100vw;
+            top: 10vh;
+        height: auto;
+
+        }
+    }
+
+    &__bgc {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60%;
+
+        &-cloud-2 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60%;
+        }
+
+        &-cloud-3 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50%;
+        }
+
+        &-cloud-4 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50%;
+        }
+    }
+
+    &__description {
+        font-size: $subtitle-font-size;
+        margin-top: 200px;
+        margin-bottom: $spacing-large;
+
+        @media screen and (max-width: 768px) {
+            font-size: $subtitle-font-size / 1.5;
+        }
+    }
+
+    &__title {
+        font-size: $header-font-size;
+        margin-bottom: $spacing-large;
+
+        @media screen and (max-width: 768px) {
+            font-size: $header-font-size / 2;
+        }
+
+        @media screen and (max-width: 500px) {
+            font-size: $header-font-size / 2.5;
+        }
+    }
+
+    &__button {
+        @include button-style($light-button-color, auto, auto, $light-background-color, $spacing-medium * 2, $spacing-medium $spacing-large + 5px, $spacing-large, pointer, $box-shadow-button);
+
+        &-link:first-of-type {
+            color: $light-background-color;
+        }
+
+        
+        @media screen and (max-width: 768px) {
+            @include button-style($light-button-color, auto, auto, $light-background-color, $spacing-medium * 2, $spacing-small $spacing-large, $spacing-small, pointer, $box-shadow-button);
+        }
+    }
+}

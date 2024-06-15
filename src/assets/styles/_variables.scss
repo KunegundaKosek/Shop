@@ -10,9 +10,10 @@ $dark-cloud-color-2-dark: #4c4c4c;
 $dark-cloud-color-3-dark: #5e5e5e;
 $dark-button-color-dark: #e0e0e0;
 
+$default-font-size: 16px;
 $header-font-size: 48px;
 $subtitle-font-size: 20px;
-$button-font-size: 16px;
+$button-font-size: 18px;
 $links-font-size: 14px;
 
 $font-montserrat: "Montserrat", sans-serif;
@@ -29,3 +30,5 @@ $breakpoint-xs: 480px;
 $breakpoint-sm: 768px;
 $breakpoint-md: 992px;
 $breakpoint-lg: 1200px;
+
+$box-shadow-button: 0 0 10px 0 rgba(0, 0, 0, 0.1);

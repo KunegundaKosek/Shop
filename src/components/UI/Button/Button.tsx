@@ -1,8 +1,12 @@
-import React from 'react';
 import classes from './Button.module.scss';
 
-const Button = () => {
-    return <div className={classes.button}>Button</div>;
+type Props = {
+    children: JSX.Element | JSX.Element[] | string;
+    onClick?: () => void;
+    className?: string;
+}
+const Button = ({children, onClick, className}: Props) => {
+    return <button className={className} onClick={onClick}>{children}</button>;
 };
 
 export default Button;

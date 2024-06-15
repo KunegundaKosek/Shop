@@ -10,12 +10,13 @@ import Nav from './components/Nav/Nav';
 import LoginPage from './pages/LoginPage/LoginPage';
 
 function App() {
+
     return (
         <div>
             <Nav />
             <Routes>
                 <Route path='/' element={<HomePage />} />
-                <Route path='/produkty' element={<ProductsPage />} />
+                <Route path='/sklep' element={<ProductsPage />} />
                 <Route path='/dodaj-produkt' element={<AddNewProduct />} />
                 <Route path='/koszyk' element={<CartPage />} />
                 <Route path='/logowanie' element={<LoginPage />} />

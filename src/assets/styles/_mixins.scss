@@ -1,0 +1,21 @@
+@import '../../assets/styles/variables';
+
+@mixin button-style($bgc-color: $light-button-color, $height: auto, $width: auto, $color: $light-background-color, $border-radius: $spacing-medium, $padding: $spacing-medium, $margin: $spacing-small, $cursor: pointer, $box-shadow) {
+    background-color: $bgc-color;
+    height: $height;
+    width: $width;
+    color: $color;
+    border-radius: $border-radius;
+    padding: $padding;
+    margin: $margin;
+    cursor: $cursor;
+    box-shadow: $box-shadow;
+    
+    font-size: $button-font-size;
+    $transition: 0.5s;
+
+    &:hover {
+        background-color: darken($bgc-color, 10%);
+    }
+
+}

@@ -1,3 +1,6 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
 .button {
-      color: red;
+      @include button-style($light-button-color, auto, auto, $light-background-color, $spacing-medium, $spacing-small, $spacing-medium, pointer, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
