@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './HomePage.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faOpencart } from '@fortawesome/free-brands-svg-icons';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
@@ -8,12 +8,15 @@ import Button from '../../components/UI/Button/Button';
 
 const HomePage = () => {
 
+    const navigate = useNavigate();
+
+    const handleClick = (url: string) => {
+        navigate(url);
+    }
+
     return (
         <section id='homePage' className={classes.main}>
             <img className={classes.main__bgcImg} src={require('../../assets/images/rocket.png')} alt="rocket" />
-
-            {/* <img className={classes['main__bgc-cloud-3']} src={require('../../assets/images/cloud-3.png')} alt="" /> */}
-
 
             <p className={classes.main__description}>Witaj w naszym sklepie internetowym! </p>
             <h1 className={classes.main__title}>
@@ -21,20 +24,19 @@ const HomePage = () => {
 
             <div>
 
-                <Button className={classes.main__button}>
+                <Button onClick={() => handleClick('/sklep')} className={classes.main__button}>
 
-                    <Link className={classes['main__button-link']} to='/produkty'>
-                        <FontAwesomeIcon icon={faOpencart} />
-                        &nbsp;Zacznij zakupy
-                    </Link>
+                    <p><FontAwesomeIcon icon={faOpencart} />
+                        &nbsp;Zacznij zakupy</p>
                 </Button>
 
-                <Button className={`${classes.main__button}`}>
-                    <Link className={classes['main__button-link']} to='/logowanie'>
-                        <FontAwesomeIcon icon={faCircle} />
-                        &nbsp;Zaloguj się
+                <Button onClick={() => handleClick('/logowanie')} className={`${classes.main__button}`}>
+                        <p>
 
-                    </Link>
+                            <FontAwesomeIcon icon={faCircle} />
+                            &nbsp;Zaloguj się
+                        </p>
+
                 </Button>
             </div>
 

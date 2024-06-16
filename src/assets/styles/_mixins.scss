@@ -1,6 +1,6 @@
 @import '../../assets/styles/variables';
 
-@mixin button-style($bgc-color: $light-button-color, $height: auto, $width: auto, $color: $light-background-color, $border-radius: $spacing-medium, $padding: $spacing-medium, $margin: $spacing-small, $cursor: pointer, $box-shadow) {
+@mixin button-style($bgc-color: $light-button-color, $height: auto, $width: auto, $color: $light-background-color, $border-radius: $spacing-medium, $padding: $spacing-medium, $margin: $spacing-small, $cursor: pointer, $box-shadow: $box-shadow-button) {
     background-color: $bgc-color;
     height: $height;
     width: $width;
