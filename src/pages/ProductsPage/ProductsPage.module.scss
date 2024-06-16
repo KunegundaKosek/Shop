@@ -1,0 +1,16 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.products {
+    text-align: center;
+
+    &__title {
+        padding-top: $spacing-small;
+    }
+
+    &__loading {
+        margin-top: 500px;
+    }
+
+    
+}
