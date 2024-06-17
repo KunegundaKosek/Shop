@@ -12,7 +12,7 @@ const ProductsListEmty = ({ currentPage, setCurrentPage, loading, productsPerPag
     return (
         <section className={classes.empty}>
             <h1 className={classes.empty__title}>
-                Usunąłeś wszystkie produkty z tej listy!
+                Niestety nic tutaj nie ma 
             </h1>
             <em className={classes.empty__icon}>
                 <FontAwesomeIcon icon={faFaceFrown} />

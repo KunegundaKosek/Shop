@@ -4,7 +4,8 @@
 .search {
 
     &__input {
-        margin-top: 100px;
+        margin-top: $spacing-medium * 9;
+        margin-bottom: $spacing-medium;
         width: 45%;
         border-radius: 40px;
         border: 2px solid white;

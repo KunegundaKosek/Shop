@@ -14,10 +14,12 @@ export const useProductsList = () => {
     const [productsList, setProductsList] = useState<Product[]>([]);
     const [loading, setLoading] = useState(false);
 
-    const fetchProducts = async (page: number, limit: number) => {
+    const fetchProducts = async (page: number, limit: number, query: string = "") => {
         setLoading(true);
         try {
-            const response = await fetch(`https://dummyjson.com/products?page=${page}&limit=${limit}&skip=${page * limit - limit}`);
+            const url = query ? `https://dummyjson.com/products/search?q=${query}` : `https://dummyjson.com/products?page=${page}&limit=${limit}&skip=${page * limit - limit}`;
+
+            const response = await fetch(url);
 
             if (!response.ok) throw new Error('Error fetching products');
 
@@ -54,8 +56,6 @@ export const useProductsList = () => {
         }
     }
 
-// dodanie updatedProducts jako parametry
-
     const updateProducts = async (id: number, updatedProduct: Partial<Product>) => {
         try {
             const response = await fetch(`https://dummyjson.com/products/${id}`, {
@@ -74,13 +74,12 @@ export const useProductsList = () => {
         }
     }
 
-
     return {
         productsList,
         loading,
         fetchProducts,
         deleteProducts,
-        updateProducts
+        updateProducts,
     };
 };
 
