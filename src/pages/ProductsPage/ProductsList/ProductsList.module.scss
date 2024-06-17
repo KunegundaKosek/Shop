@@ -1,0 +1,17 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+.products__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: $spacing-xlarge 
+;
+}
+
+.editModal__title {
+    text-align: center;
+}

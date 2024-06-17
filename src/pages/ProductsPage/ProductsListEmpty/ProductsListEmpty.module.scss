@@ -1,0 +1,23 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    margin-top: 300px;
+
+    &__title {
+        font-size: $header-font-size;
+    }
+
+    &__icon {
+        font-size: $subtitle-font-size * 5;
+    }
+
+    &__button {
+        @include button-style();
+        width: 200px;
+        margin: 20px auto;
+    }
+}

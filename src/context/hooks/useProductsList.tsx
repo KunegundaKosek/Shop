@@ -6,7 +6,6 @@ export type Product = {
     description: string;
     category: string;
     price: number;
-    discountPercentage: number;
     brand: string;
     images: string[];
 }
@@ -25,7 +24,6 @@ export const useProductsList = () => {
             const { products } = await response.json();
 
             setProductsList(products);
-            console.log(productsList);
 
         } catch (error) {
             console.error('Fetch error:', error);
@@ -56,7 +54,25 @@ export const useProductsList = () => {
         }
     }
 
-    
+// dodanie updatedProducts jako parametry
+
+    const updateProducts = async (id: number, updatedProduct: Partial<Product>) => {
+        try {
+            const response = await fetch(`https://dummyjson.com/products/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedProduct)
+            })
+
+            if (!response.ok) throw new Error('Error updating product');
+            const updatedData = await response.json();
+
+
+            setProductsList(prev => prev.map(product => product.id === id ? { ...product, ...updatedData } : product));
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
 
     return {
@@ -64,6 +80,7 @@ export const useProductsList = () => {
         loading,
         fetchProducts,
         deleteProducts,
+        updateProducts
     };
 };
 

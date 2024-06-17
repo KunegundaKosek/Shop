@@ -1,0 +1,55 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+.products__list {
+
+    &-title {
+        margin: $spacing-large 0;
+    }
+
+    &-product {
+        flex-basis: 20%;
+    }
+
+    &-card {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+        cursor: pointer;
+        border: 2px solid transparent;
+
+        &:hover {
+            transform: scale(1.05);
+            border: 2px solid $light-cloud-color-1;
+        }
+
+    }
+
+    &-buttonsBox {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: $spacing-small;
+    }
+
+    &-button {
+        @include button-style();
+
+        &--price {
+            background-image: url('../../../assets/images/background-text.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: $font-nunito;
+            border: 1px solxid red;
+            color: black;
+            flex-basis: 100%;
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+}

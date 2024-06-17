@@ -2,7 +2,7 @@ import classes from './Button.module.scss';
 
 type Props = {
     children: JSX.Element | JSX.Element[] | string | string[];
-    onClick?: () => void;
+    onClick?:  () => void;
     className?: string;
 }
 const Button = ({children, onClick, className}: Props) => {

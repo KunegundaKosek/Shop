@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import classes from './ProductsPage.module.scss';
-import { useProductsList } from '../../context/hooks/useProductsList';
-import Loader from '../../components/UI/Loader/Loader';
-import ProductsList from './ProductsList';
+import { useProductsList } from '../../../context/hooks/useProductsList';
+import Loader from '../../../components/UI/Loader/Loader';
+import ProductsList from '../ProductsList/ProductsList';
 
 const ProductsPage = () => {
-    const { fetchProducts, productsList, loading, deleteProducts } = useProductsList();
+    const { fetchProducts, productsList, loading, deleteProducts, updateProducts } = useProductsList();
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(8);
 
@@ -16,10 +16,6 @@ const ProductsPage = () => {
     const handleDelete = async (id: number) => {
         await deleteProducts(id, currentPage, productsPerPage);
     }
-
-    console.log('products[page')
-    console.log(productsList);
-
 
     return (
         <section className={classes.products}>
@@ -36,6 +32,7 @@ const ProductsPage = () => {
                     loading={loading}
                     productsPerPage={productsPerPage}
                     setCurrentPage={setCurrentPage}
+                    updateProducts={updateProducts}
                 />
             )}
         </section>
