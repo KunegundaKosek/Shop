@@ -1,0 +1,13 @@
+@import '../../../assets/styles/variables';
+
+.input {
+    text-align: center;
+    display: block;
+    border-radius: 40px;
+    padding: 10px;
+    margin: 10px;
+    font-family: $font-nunito;
+    background-color: $light-background-color;
+    border: none;
+    width: 60%;
+}

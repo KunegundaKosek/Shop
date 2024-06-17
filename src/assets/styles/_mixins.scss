@@ -19,3 +19,38 @@
     }
 
 }
+
+
+@mixin absolute-style-top-left($top, $left, $width, $opacity) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    opacity: $opacity;
+    width: $width;
+}
+
+@mixin absolute-style-top-rignt($top, $right, $width, $opacity) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    opacity: $opacity;
+    width: $width;
+}
+
+@mixin absolute-style-bottom-left($bottom, $left, $width, $opacity) {
+    position: absolute;
+    bottom: $bottom;
+    left: $left;
+    opacity: $opacity;
+    width: $width;
+}
+
+@mixin absolute-style-bottom-right($bottom, $right, $width, $opacity) {
+    position: absolute;
+    bottom: $bottom;
+    right: $right;
+    opacity: $opacity;
+    width: $width;
+}
+
+

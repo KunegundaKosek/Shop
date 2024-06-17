@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
-import ProductsPage from './pages/ProductsPage/ProductsPage';
+import ProductsPage from './pages/ProductsPage/ProductsPage/ProductsPage';
 import AddNewProduct from './pages/AddNewProduct/AddNewProduct';
 import CartPage from './pages/CartPage/CartPage';
 import NotFound from './pages/NotFound/NotFound';
