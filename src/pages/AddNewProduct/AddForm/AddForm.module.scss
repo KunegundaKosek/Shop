@@ -1,0 +1,16 @@
+@import '../../../assets/styles/mixins';
+
+.addProduct__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-input {
+        background-color: white;
+    }
+
+    &-button {
+        @include button-style();
+    }
+}
