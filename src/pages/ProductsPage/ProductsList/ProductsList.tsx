@@ -1,9 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { ChangeEvent, FormEvent, useReducer, useState } from 'react'
-import Button from '../../../components/UI/Button/Button'
-import { faCartArrowDown, faCirclePlus, faFaceFrown, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { Product } from '../../../context/hooks/useProductsList';
-import Card from '../../../components/UI/Card/Card';
 import PaginationUI from '../../../components/UI/Pagination/Pagination';
 import classes from './ProductsList.module.scss';
 import Modal from '../../../components/UI/Modal/Modal';
