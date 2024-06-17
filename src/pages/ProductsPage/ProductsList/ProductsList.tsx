@@ -7,8 +7,6 @@ import ProductsListEmty from '../ProductsListEmpty/ProductsListEmty';
 import Form from '../../../components/UI/Form/Form';
 import { initialState, reducer } from './productReducer';
 import SingleProduct from '../SingleProduct/SingleProduct';
-import Search from '../../../components/UI/Search/Search';
-
 
 export type Props = {
     handleDelete: (id: number) => void;
@@ -72,7 +70,7 @@ const ProductsList = ({ handleDelete, productsList, currentPage, loading, produc
 
     return (
         <>
-        <Search />
+     
             {productsList.length === 0 ? (
                 <ProductsListEmty
                     currentPage={currentPage}
