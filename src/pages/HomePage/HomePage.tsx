@@ -5,8 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faOpencart } from '@fortawesome/free-brands-svg-icons';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../components/UI/Button/Button';
+import { useTranslation } from 'react-i18next';
 
 const HomePage = () => {
+
+    const { t } = useTranslation();
 
     const navigate = useNavigate();
 
@@ -18,23 +21,23 @@ const HomePage = () => {
         <section id='homePage' className={classes.main}>
             <img className={classes.main__bgcImg} src={require('../../assets/images/rocket.png')} alt="rocket" />
 
-            <p className={classes.main__description}>Witaj w naszym sklepie internetowym! </p>
+            <p className={classes.main__description}>{t("app.homePageSubtitle")}</p>
             <h1 className={classes.main__title}>
-                Odkryj nowości w naszym sklepie internetowym już dziś! Łatwe zakupy online z szybką dostawą!</h1>
+                {t("app.homePageTitle")}</h1>
 
             <div>
 
                 <Button onClick={() => handleClick('/sklep')} className={classes.main__button}>
 
                     <p><FontAwesomeIcon icon={faOpencart} />
-                        &nbsp;Zacznij zakupy</p>
+                        &nbsp;{t("app.homePageShopButton")}</p>
                 </Button>
 
                 <Button onClick={() => handleClick('/logowanie')} className={`${classes.main__button}`}>
                         <p>
 
                             <FontAwesomeIcon icon={faCircle} />
-                            &nbsp;Zaloguj się
+                            &nbsp;{t("app.homePageLoginButton")}
                         </p>
 
                 </Button>

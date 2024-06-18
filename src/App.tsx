@@ -8,12 +8,26 @@ import CartPage from './pages/CartPage/CartPage';
 import NotFound from './pages/NotFound/NotFound';
 import Nav from './components/Nav/Nav';
 import LoginPage from './pages/LoginPage/LoginPage';
+import { useTranslation } from "react-i18next";
 
-function App() {
 
+export enum Locale {
+    EN = "en",
+    PL = "pl",
+  }
+  
+  function App() {
+    const { t, i18n } = useTranslation();
+    const changeLanguage = () => {
+      i18n.changeLanguage(i18n.language === Locale.PL ? Locale.EN : Locale.PL);
+    };
     return (
         <div>
+            
             <Nav />
+            <button className='btn-language' onClick={changeLanguage}>
+                <span>{i18n.language}</span>
+            </button>
             <Routes>
                 <Route path='/' element={<HomePage />} />
                 <Route path='/sklep' element={<ProductsPage />} />

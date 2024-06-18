@@ -3,12 +3,15 @@ import classes from './Nav.module.scss';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faUser, faPuzzlePiece, faBars } from '@fortawesome/free-solid-svg-icons';
-import { faRocketchat } from '@fortawesome/free-brands-svg-icons';
 import DarkModeToggle from "react-dark-mode-toggle";
 import { CSSTransition } from 'react-transition-group';
+import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 
 const Nav = () => {
+
+    const { t } = useTranslation();
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -26,7 +29,7 @@ const Nav = () => {
 
                         <Link to='/'>
                             <FontAwesomeIcon icon={faPuzzlePiece} />
-                            &nbsp;REACT+TS Shop
+                            &nbsp;{t("app.logo")}
                         </Link>
 
                       
@@ -36,19 +39,19 @@ const Nav = () => {
 
 
                         <li className={`${classes['nav__list-item']} ${classes['nav__list-item--menuItem']}`}>
-                            <Link to='/'>Strona głóna</Link>
+                            <Link to='/'>{t("app.home")}</Link>
                         </li>
 
                         <li className={`${classes['nav__list-item']} ${classes['nav__list-item--menuItem']}`}>
 
 
-                            <Link to='/sklep'>Sklep</Link>
+                            <Link to='/sklep'>{t("app.shop")}</Link>
                         </li>
 
                         <li className={`${classes['nav__list-item']} ${classes['nav__list-item--menuItem']}`}>
 
 
-                            <Link to='/dodaj-produkt'>Dodaj produkt</Link>
+                            <Link to='/dodaj-produkt'>{t("app.newProduct")}</Link>
                         </li>
                     </menu>
                     <li className={`${classes['nav__list-item']} ${classes['nav__list-item--icons']}`}>
@@ -73,11 +76,6 @@ const Nav = () => {
                             size={80}
                         />
                     </li>
-
-                    {/* <li className={classes['nav__list-item']}>
-
-<Link to='/'><FontAwesomeIcon icon={faRocketchat} /></Link>
-</li> */}
                 </ul>
             </nav>
 
@@ -141,11 +139,6 @@ const Nav = () => {
                                 />
                             </li>
                         </div>
-
-                        {/* <li className={classes['nav__list-item']}>
-
-<Link to='/'><FontAwesomeIcon icon={faRocketchat} /></Link>
-</li> */}
                     </ul>
                 </CSSTransition>
             </nav>
