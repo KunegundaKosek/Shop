@@ -4,7 +4,7 @@ import Input from '../Input/Input';
 
 type Props = {
     htmlFor: string;
-    children: string;
+    children?: string;
 }
 
 const Label = ({ htmlFor, children }: Props) => {

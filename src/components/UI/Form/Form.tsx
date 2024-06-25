@@ -8,7 +8,7 @@ type Props = {
     value: {
         title: string;
         image: string;
-        price: string;
+        price: number;
         description: string;
         brand: string;
     };
@@ -36,7 +36,7 @@ const Form = ({ value, onChange, onSubmit }: Props) => {
             <Input id='image' type='text' value={value.image} onChange={onChange} />
 
             <Label htmlFor='price'>Zdjęcie</Label>
-            <Input id='price' type='number' value={value.price} onChange={onChange} />
+            <Input id='price' type='number' value={value.price.toString()} onChange={onChange} />
 
             <Label htmlFor='description'>Opis</Label>
             <Input id='description' type='text' value={value.description} onChange={onChange} />

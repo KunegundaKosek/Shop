@@ -1,19 +1,19 @@
 export type State = {
     title: string;
     image: string;
-    price: string;
+    price: number;
     description: string;
     brand: string;
 }
 
 export type Action = { type: 'SET_TITLE'; payload: string }
     | { type: 'SET_IMAGE'; payload: string }
-    | { type: 'SET_PRICE'; payload: string } | { type: 'SET_DESCRIPTION'; payload: string } | { type: 'SET_BRAND'; payload: string }
+    | { type: 'SET_PRICE'; payload: number } | { type: 'SET_DESCRIPTION'; payload: string } | { type: 'SET_BRAND'; payload: string }
 
 export const initialState: State = {
     title: '',
     image: '',
-    price: '',
+    price: 0,
     description: '',
     brand: '',
 }

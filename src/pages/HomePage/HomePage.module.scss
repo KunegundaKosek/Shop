@@ -8,6 +8,7 @@
     align-items: center;
     text-align: center;
     width: 80%;
+    padding-top: 200px;
     margin: 0 auto;
 
     &__bgcImg {
@@ -16,15 +17,13 @@
         position: absolute;
         z-index: -1;
         opacity: 0.4;
-        // transform: rotate(35deg);
         overflow: hidden;
         height: 90vh;
-        // width: 100vw;
 
         @media screen and (max-width: 768px) {
             width: 100vw;
             top: 10vh;
-        height: auto;
+            height: auto;
 
         }
     }
@@ -34,12 +33,15 @@
         bottom: 0;
         left: 0;
         width: 60%;
+        z-index: -1;
 
         &-cloud-2 {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 60%;
+            z-index: -1;
+
         }
 
         &-cloud-3 {
@@ -47,6 +49,8 @@
             bottom: 0;
             right: 0;
             width: 50%;
+            z-index: -1;
+
         }
 
         &-cloud-4 {
@@ -54,12 +58,13 @@
             bottom: 0;
             right: 0;
             width: 50%;
+            z-index: -1;
+
         }
     }
 
     &__description {
         font-size: $subtitle-font-size;
-        margin-top: 200px;
         margin-bottom: $spacing-large;
 
         @media screen and (max-width: 768px) {
@@ -87,7 +92,7 @@
             color: $light-background-color;
         }
 
-        
+
         @media screen and (max-width: 768px) {
             @include button-style($light-button-color, auto, auto, $light-background-color, $spacing-medium * 2, $spacing-small $spacing-large, $spacing-small, pointer, $box-shadow-button);
         }

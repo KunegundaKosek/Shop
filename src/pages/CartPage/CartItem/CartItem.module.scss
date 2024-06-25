@@ -1,0 +1,28 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+.shopItem {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    // width: 80%;
+
+    &__list {
+        width: 80%;
+        margin: $spacing-medium auto;
+    }
+
+    &__card {
+
+        &-titleProduct {}
+
+        &-image {
+            width: 100px;
+            height: 100px;
+        }
+
+        &-button {}
+    }
+
+
+}

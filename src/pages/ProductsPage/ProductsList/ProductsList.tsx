@@ -1,24 +1,22 @@
 import React, { ChangeEvent, FormEvent, useReducer, useState } from 'react'
 import { Product } from '../../../context/hooks/useProductsList';
-import PaginationUI from '../../../components/UI/Pagination/Pagination';
 import classes from './ProductsList.module.scss';
 import Modal from '../../../components/UI/Modal/Modal';
 import ProductsListEmty from '../ProductsListEmpty/ProductsListEmty';
 import Form from '../../../components/UI/Form/Form';
-import { initialState, reducer } from './productReducer';
+import { Action, initialState, reducer } from './productReducer';
 import SingleProduct from '../SingleProduct/SingleProduct';
 
 export type Props = {
     handleDelete: (id: number) => void;
     productsList: Product[];
-    currentPage: number;
-    setCurrentPage: (page: number) => void;
     loading: boolean;
-    productsPerPage: number;
     updateProducts: (id: number, updatedProduct: Partial<Product>) => void;
 }
 
-const ProductsList = ({ handleDelete, productsList, currentPage, loading, productsPerPage, setCurrentPage, updateProducts }: Props) => {
+const ProductsList = ({ handleDelete, productsList, loading, updateProducts }: Props) => {
+
+    console.log('productsList', productsList);
 
     const [isOpen, setIsOpen] = useState(false);
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -32,8 +30,8 @@ const ProductsList = ({ handleDelete, productsList, currentPage, loading, produc
         if (product) {
             dispatch({ type: 'SET_TITLE', payload: product.title });
             dispatch({ type: 'SET_IMAGE', payload: product.images[0] });
-            dispatch({ type: 'SET_PRICE', payload: product.price.toString() });
-            dispatch({ type: 'SET_DESCRIPTION', payload: product.description });
+            dispatch({ type: 'SET_PRICE', payload: product.price });
+            dispatch({ type: 'SET_DESCRIPTION', payload: product.desc });
             dispatch({ type: 'SET_BRAND', payload: product.brand });
         }
     }
@@ -50,10 +48,15 @@ const ProductsList = ({ handleDelete, productsList, currentPage, loading, produc
 
     const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
-        dispatch({
-            type: `SET_${id.toUpperCase()}` as 'SET_TITLE' | 'SET_IMAGE' | 'SET_PRICE' | 'SET_DESCRIPTION' | 'SET_BRAND', payload: value
-        })
-        console.log(e.target.value);
+
+        let action;
+        if (id === 'price') {
+            action = { type: `SET_${id.toUpperCase()}`, payload: Number(value) };
+        } else {
+            action = { type: `SET_${id.toUpperCase()}`, payload: value };
+        }
+
+        dispatch(action as Action);
     }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -62,7 +65,7 @@ const ProductsList = ({ handleDelete, productsList, currentPage, loading, produc
             updateProducts(editingProductId, {
                 title: state.title,
                 images: [state.image],
-                price: parseFloat(state.price)
+                price: state.price
             })
         }
         setIsOpen(false);
@@ -70,19 +73,18 @@ const ProductsList = ({ handleDelete, productsList, currentPage, loading, produc
 
     return (
         <>
-     
+
             {productsList.length === 0 ? (
                 <ProductsListEmty
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    loading={loading}
-                    productsPerPage={productsPerPage}
                 />
             ) : (
                 <ul className={classes.products__list}>
-                    <SingleProduct productsList={productsList} handleDelete={handleDelete} openModal={openModal} />
+                    {productsList.map((product) => (
+                        <SingleProduct key={product.id} product={product} handleDelete={handleDelete} openModal={openModal} />
 
-                    <PaginationUI currentPage={currentPage} setCurrentPage={setCurrentPage} loading={loading} totalPages={productsPerPage} />
+                    ))}
+
+                    {/* <PaginationUI currentPage={currentPage} setCurrentPage={setCurrentPage} loading={loading} totalPages={productsPerPage} /> */}
                 </ul>
 
 
