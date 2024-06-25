@@ -7,17 +7,32 @@ import DarkModeToggle from "react-dark-mode-toggle";
 import { CSSTransition } from 'react-transition-group';
 import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
+
+
+export enum Locale {
+    EN = "en",
+    PL = "pl",
+}
 
 const Nav = () => {
-
-    const { t } = useTranslation();
 
     const [isOpen, setIsOpen] = useState(false);
 
     const handleToggleNavigation = () => {
         setIsOpen(!isOpen);
     }
+
+    const cartItems = useSelector((state: RootState) => state.cart.items)
+
+
+
+    const { t, i18n } = useTranslation();
+    const changeLanguage = () => {
+        i18n.changeLanguage(i18n.language === Locale.PL ? Locale.EN : Locale.PL);
+    };
 
     return (
         <>
@@ -32,7 +47,7 @@ const Nav = () => {
                             &nbsp;{t("app.logo")}
                         </Link>
 
-                      
+
                     </li>
 
                     <menu className={classes['nav__list-menu']}>
@@ -58,6 +73,7 @@ const Nav = () => {
 
                         <Link to='/koszyk' >
                             <FontAwesomeIcon icon={faShoppingCart} />
+                            <p className={`${classes['nav__list-item--quantity']}`}>{cartItems.length}</p>
                         </Link>
                     </li>
 
@@ -72,9 +88,9 @@ const Nav = () => {
 
                     <li className={classes['nav__list-item']}>
 
-                        <DarkModeToggle
-                            size={80}
-                        />
+                        <button className='btn-language' onClick={changeLanguage}>
+                            <span>{i18n.language}</span>
+                        </button>
                     </li>
                 </ul>
             </nav>
@@ -84,19 +100,13 @@ const Nav = () => {
                     <FontAwesomeIcon icon={faBars} />
                 </button>
 
+                <Link className={classes.navToggle__logo} to='/'>
+                    <FontAwesomeIcon icon={faPuzzlePiece} />
+                    &nbsp;{t("app.logo")}
+                </Link>
+
                 <CSSTransition in={isOpen} timeout={300} classNames={classes.navToggle} unmountOnExit>
                     <ul className={classes.navToggle__list}>
-
-                        <li className={`${classes['nav__list-item']} ${classes['nav__list-item--icons']} ${classes['nav__list-item--title']}`}>
-
-
-                            <Link to='/'>
-                                <FontAwesomeIcon icon={faPuzzlePiece} />
-                                REACT+TS Shop
-                            </Link>
-                        </li>
-
-
 
                         <li className={`${classes['nav__list-item']} ${classes['nav__list-item--menuItem']}`}>
                             <Link to='/'>Strona głóna</Link>
@@ -121,6 +131,7 @@ const Nav = () => {
                                 <Link to='/koszyk' >
                                     <FontAwesomeIcon icon={faShoppingCart} />
                                 </Link>
+                                    <p className={`${classes['navToggle__list-item--quantity']}`}>{cartItems.length}</p>
                             </li>
 
                             <li className={`${classes['nav__list-item']}`}>
@@ -134,9 +145,12 @@ const Nav = () => {
 
                             <li className={classes['nav__list-item']}>
 
-                                <DarkModeToggle
-                                    size={80}
-                                />
+
+                                <button className='btn-language' onClick={changeLanguage}>
+                                    <span>{i18n.language}</span>
+                                </button>
+
+
                             </li>
                         </div>
                     </ul>

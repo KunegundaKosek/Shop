@@ -2,7 +2,6 @@
 @import './Nav-media-queries.module';
 
 .nav {
-    // display: none;
     z-index: 100;
     position: fixed;
     top: 0;
@@ -14,6 +13,10 @@
     -webkit-box-shadow: 3px 8px 16px -12px rgba(66, 68, 90, 1);
     -moz-box-shadow: 3px 8px 16px -12px rgba(66, 68, 90, 1);
     box-shadow: 3px 8px 16px -12px rgba(66, 68, 90, 1);
+
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
 
     &__list {
         text-align: center;
@@ -58,6 +61,7 @@
 
             &--icons {
                 font-size: $default-font-size + 10;
+                position: relative;
 
                 @media screen and (max-width: 1024px) {
                     font-size: $default-font-size;
@@ -70,23 +74,55 @@
                 }
             }
 
+            &--quantity {
+                position: absolute;
+                top: 40px;
+                left: 63px;
+
+                border: 2px solid black;
+                color: white;
+                background-color: black;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+
+                @media screen and (max-width: 1340px) {
+                    top: 45px;
+                    left: 50px;
+                    font-size: $default-font-size + 4;
+                    width: 30px;
+                    height: 30px;
+                }
+
+                @media screen and (max-width: 1024px) {
+                    top: 40px;
+                    left: 105px;
+                    font-size: $default-font-size;
+                }
+
+                @media screen and (max-width: 928px) {
+                    top: 40px;
+                    left: 85px;
+                    font-size: $default-font-size;
+                }
+            }
+
         }
     }
 
     @media screen and (max-width: 1340px) {
         font-size: $default-font-size - 2;
-        background-color: red;
+        // background-color: red;
     }
 
     @media screen and (max-width: 1024px) {
         font-size: $default-font-size - 4;
-        background-color: yellow;
+        // background-color: yellow;
     }
 }
 
 .navToggle {
-    display: none;
-    height: 80px;
+    display: block;
     width: 100%;
     border-radius: 14px;
     background-color: $light-background-color;
@@ -95,9 +131,18 @@
     -moz-box-shadow: 3px 8px 16px -12px rgba(66, 68, 90, 1);
     box-shadow: 3px 8px 16px -12px rgba(66, 68, 90, 1);
 
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
+
     &__list {
-        display: block;
+        position: absolute;
         list-style-type: none;
+        height: 100vh;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        z-index: 100;
+
 
         &-item {
             padding: 20px;
@@ -111,11 +156,48 @@
 
     }
 
-    
+
 }
 
 .btn {
     width: 80px;
     height: 80px;
+
+}
+
+.navToggle-enter-active {
+    max-height: 100vh;
+    transition: max-height 300ms ease-in-out;
+}
+
+.navToggle-exit {
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.navToggle-exit-active {
+    max-height: 0;
+    transition: max-height 300ms ease-in-out;
+}
+
+.navToggle {
+
+    &__logo {
+
+        padding: 20px;
+        color: black;
+    }
+
+    &__list-item--quantity {
+        position: absolute;
+        top: 177px;
+        left: 74px;
+        border-radius: 50%;
+        background-color: black;
+        color: white;
+        width: 20px;
+        padding: 0 5px;
+        height: 20px;
+    }
 
 }

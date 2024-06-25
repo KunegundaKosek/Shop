@@ -1,47 +1,77 @@
-import React, { ChangeEvent, FormEvent } from 'react'
-import Label from '../../../components/UI/Label/Label'
+import React, { ChangeEvent, FormEvent } from 'react';
+import Label from '../../../components/UI/Label/Label';
 import Input from '../../../components/UI/Input/Input';
 import classes from './AddForm.module.scss';
 import Button from '../../../components/UI/Button/Button';
 
 type Props = {
-        handleChangeTitle: (e: ChangeEvent<HTMLInputElement>) => void;
-        handleChangeImage: (e: ChangeEvent<HTMLInputElement>) => void;
-        handleChangeDesc: (e: ChangeEvent<HTMLInputElement>) => void;
-        handleChangePrice: (e: ChangeEvent<HTMLInputElement>) => void;
-        handleChangeBrand: (e: ChangeEvent<HTMLInputElement>) => void;
-
+    product: {
         title: string;
-        image: string;
+        images: string[];
         desc: string;
-        price: string;
+        price: number;
         brand: string;
+    };
+    handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+};
 
-        onSubmit: (e: FormEvent<HTMLFormElement>) => void;
-}
-
-const AddForm = ({handleChangeTitle, handleChangeImage, handleChangeDesc, handleChangePrice, handleChangeBrand, title, image, desc, price, brand, onSubmit}: Props) => {
+const AddForm = ({ product, handleChange, onSubmit }: Props) => {
     return (
         <form className={classes.addProduct__form} onSubmit={onSubmit}>
             <Label htmlFor='title'>Nazwa Produktu</Label>
-            <Input className={`${classes['addProduct__form-input']}`} type='text' id='title' value={title} onChange={handleChangeTitle} />
+            <Input
+                className={classes['addProduct__form-input']}
+                type='text'
+                id='title'
+                name='title'
+                value={product.title}
+                onChange={handleChange}
+            />
 
             <Label htmlFor='image'>Zdjęcie</Label>
-            <Input className={`${classes['addProduct__form-input']}`} type='text' id='image' value={image} onChange={handleChangeImage} />
+            <Input
+                className={classes['addProduct__form-input']}
+                type='text'
+                id='image'
+                name='image'
+                value={product.images[0]}
+                onChange={handleChange}
+            />
 
-            <Label htmlFor='description'>Opis</Label>
-            <Input className={`${classes['addProduct__form-input']}`} type='text' id='description' value={desc} onChange={handleChangeDesc} />
+            <Label htmlFor='desc'>Opis</Label>
+            <Input
+                className={classes['addProduct__form-input']}
+                type='text'
+                id='desc'
+                name='desc'
+                value={product.desc}
+                onChange={handleChange}
+            />
 
             <Label htmlFor='price'>Cena</Label>
-            <Input className={`${classes['addProduct__form-input']}`} type='number' id='price' value={price} onChange={handleChangePrice} />
-
+            <Input
+                className={classes['addProduct__form-input']}
+                type='number'
+                id='price'
+                name='price'
+                value={product.price.toString()} // Konwersja liczby na string
+                onChange={handleChange}
+            />
 
             <Label htmlFor='brand'>Producent</Label>
-            <Input className={`${classes['addProduct__form-input']}`} type='text' id='brand' value={brand} onChange={handleChangeBrand} />
+            <Input
+                className={classes['addProduct__form-input']}
+                type='text'
+                id='brand'
+                name='brand'
+                value={product.brand}
+                onChange={handleChange}
+            />
 
-            <Button className={`${classes['addProduct__form-button']}`}>Dodaj nowy produkt</Button>
+            <Button className={classes['addProduct__form-button']}>Dodaj nowy produkt</Button>
         </form>
-    )
-}
+    );
+};
 
-export default AddForm
+export default AddForm;

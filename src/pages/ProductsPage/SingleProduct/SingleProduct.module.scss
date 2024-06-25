@@ -5,6 +5,7 @@
 
     &-title {
         margin: $spacing-large 0;
+        padding-top: $spacing-large;
     }
 
     &-product {
@@ -20,6 +21,7 @@
         transition: 0.3s;
         cursor: pointer;
         border: 2px solid transparent;
+        
 
         &:hover {
             transform: scale(1.05);
@@ -31,13 +33,18 @@
     &-buttonsBox {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: $spacing-small;
+        gap: $spacing-small * 2;
+        position: relative;
+        padding: $spacing-large;
     }
 
     &-button {
         @include button-style();
 
         &--price {
+            position: absolute;
+            top:-320px;
+            left: 140px;
             background-image: url('../../../assets/images/background-text.png');
             background-repeat: no-repeat;
             background-size: cover;
