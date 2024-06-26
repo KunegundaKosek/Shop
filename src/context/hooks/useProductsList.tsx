@@ -1,23 +1,25 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export type Product = {
     id: number;
     title: string;
-    desc: string;
+    description: string;
     category: string;
     price: number;
     brand: string;
     images: string[];
-}
+};
 
 export const useProductsList = () => {
     const [productsList, setProductsList] = useState<Product[]>([]);
     const [loading, setLoading] = useState(false);
 
-    const fetchProducts = async (query: string = "") => {
+    const fetchProducts = async (query: string = '') => {
         setLoading(true);
         try {
-            const url = query ? `https://dummyjson.com/products/search?q=${query}` : `https://dummyjson.com/products?limit=200`;
+            const url = query
+                ? `https://dummyjson.com/products/search?q=${query}`
+                : `https://dummyjson.com/products?limit=200`;
 
             const response = await fetch(url);
 
@@ -26,7 +28,6 @@ export const useProductsList = () => {
             const { products } = await response.json();
 
             setProductsList(products);
-
         } catch (error) {
             console.error('Fetch error:', error);
         } finally {
@@ -34,44 +35,57 @@ export const useProductsList = () => {
         }
     };
 
-    const deleteProducts = async (id: number,) => {
+    const deleteProducts = async (id: number) => {
         try {
-            const response = await fetch(`https://dummyjson.com/products/${id}`, {
-                method: 'DELETE',
-            })
+            const response = await fetch(
+                `https://dummyjson.com/products/${id}`,
+                {
+                    method: 'DELETE',
+                }
+            );
 
             if (!response.ok) throw new Error('Error deleting product');
 
-            setProductsList(prevProducts => prevProducts.filter(product => product.id !== id));
-
+            setProductsList(prevProducts =>
+                prevProducts.filter(product => product.id !== id)
+            );
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
-    const updateProducts = async (id: number, updatedProduct: Partial<Product>) => {
+    const updateProducts = async (
+        id: number,
+        updatedProduct: Partial<Product>
+    ) => {
         try {
-            const response = await fetch(`https://dummyjson.com/products/${id}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(updatedProduct)
-            })
+            const response = await fetch(
+                `https://dummyjson.com/products/${id}`,
+                {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedProduct),
+                }
+            );
 
             if (!response.ok) throw new Error('Error updating product');
             const updatedData = await response.json();
-            setProductsList(prev => prev.map(product => product.id === id ? { ...product, ...updatedData } : product));
-
+            setProductsList(prev =>
+                prev.map(product =>
+                    product.id === id ? { ...product, ...updatedData } : product
+                )
+            );
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
     const addProduct = async (newProduct: Product) => {
         try {
             const response = await fetch('https://dummyjson.com/products/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newProduct)
+                body: JSON.stringify(newProduct),
             });
 
             if (!response.ok) throw new Error('Failed to add product');
@@ -82,55 +96,56 @@ export const useProductsList = () => {
 
             setProductsList(prev => {
                 const updatedList = [product, ...prev];
-                console.log('Zaktualowana list produktów', updatedList)
+                console.log('Zaktualowana list produktów', updatedList);
                 return updatedList;
             });
-
-            } catch (error) {
-                console.log(error);
-            }
+        } catch (error) {
+            console.log(error);
         }
+    };
 
-    const getByCategory = async(category: string) => {
+    const getByCategory = async (category: string) => {
         try {
-            const response = await fetch(`https://dummyjson.com/products/category/${category}`);
+            const response = await fetch(
+                `https://dummyjson.com/products/category/${category}`
+            );
 
-            if(!response.ok) throw new Error('Error fetching products');
+            if (!response.ok) throw new Error('Error fetching products');
 
-            const {products} = await response.json();
+            const { products } = await response.json();
 
             setProductsList(products);
             console.log(products);
         } catch (error) {
             console.log(error);
         }
-    } 
+    };
 
     const sortProductsByOrder = async (order: string) => {
         try {
-            const response = await fetch(`https://dummyjson.com/products?sortBy=title&order=${order}`);
+            const response = await fetch(
+                `https://dummyjson.com/products?sortBy=title&order=${order}&limit=200`
+            );
 
-            if(!response.ok) throw new Error('Error fetching products');
+            if (!response.ok) throw new Error('Error fetching products');
 
-            const {products} = await response.json();
+            const { products } = await response.json();
 
             setProductsList(products);
-
-        } catch(error) {
+        } catch (error) {
             console.log(error);
         }
-    }
-
-    return {
-            productsList,
-            setProductsList,
-            loading,
-            fetchProducts,
-            deleteProducts,
-            updateProducts,
-            addProduct,
-            getByCategory,
-            sortProductsByOrder
-        };
     };
 
+    return {
+        productsList,
+        setProductsList,
+        loading,
+        fetchProducts,
+        deleteProducts,
+        updateProducts,
+        addProduct,
+        getByCategory,
+        sortProductsByOrder,
+    };
+};

@@ -4,16 +4,28 @@
 .addProduct {
     margin-top: 150px;
 
-     &__cloud1 {
+    @media screen and (max-width: 768px) {
+        margin-top: 20px;
+    }
+
+    &__cloud1 {
         @include absolute-style-top-left(150px, 500px, 100px, 0.4);
+
+        @media screen and (max-width: 768px) {
+            @include absolute-style-top-left(650px, 50px, 100px, 0.4);
+        }
     }
 
     &__cloud2 {
-        @include absolute-style-top-rignt(250px, 200px, 150px, 0.4);
+        @include absolute-style-top-right(250px, 200px, 150px, 0.4);
     }
 
     &__cloud3 {
         @include absolute-style-bottom-left(400px, 80px, 400px, 0.4);
+
+            @media screen and (max-width: 768px) {
+             @include absolute-style-bottom-left(400px, 80px, 200px, 0.4);
+        }
     }
 
     &__cloud4 {

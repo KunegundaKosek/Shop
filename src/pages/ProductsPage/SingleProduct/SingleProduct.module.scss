@@ -10,6 +10,14 @@
 
     &-product {
         flex-basis: 20%;
+
+        @media screen and (max-width: 768px) {
+            flex-basis: 40%;
+        }  // tu nie dizłą!!!
+
+        @media screen and (max-width: 420px) {
+            flex-basis: 80%;
+        }
     }
 
     &-card {
@@ -30,12 +38,26 @@
 
     }
 
+    &-image {
+        width: 200px;
+        height: 200px;
+
+        @media screen and (max-width: 420px) {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
     &-buttonsBox {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: $spacing-small * 2;
         position: relative;
         padding: $spacing-large;
+
+        @media screen and (max-width: 420px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
 
     &-button {
@@ -54,9 +76,28 @@
             color: black;
             flex-basis: 100%;
 
+            @media screen and (max-width: 420px) {
+                left: 55px;
+                top: -280px;
+            }
+
             &:hover {
                 background-color: transparent;
             }
         }
+    }
+}
+
+.modal {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    &__title {
+
+    }
+
+    &__image {
+        width: 300px;
+        height: 300px;
     }
 }
