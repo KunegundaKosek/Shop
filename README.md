@@ -33,7 +33,7 @@ To start the application, run:
     ```bash
     npm start
 
-This will run the app in development mode. Open [localhost:3000](http://localhost:3000) to view it in the browser.
+This will run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Running Tests
 To run the unit tests, use:
@@ -51,3 +51,6 @@ To run the unit tests, use:
 Kunegunda Kosek
 
 Feel free to adjust the placeholder URL in the `git clone` command with the actual URL of your repository. Additionally, you can expand on the `features` or `technologies` sections if there are more specific details you would like to include.
+
+## Images
+![Home Page: The home page features a navigation bar, a welcome message, and buttons encouraging users to start shopping or log in (login functionality is not yet added).](src/assets/images/readme1.png)
