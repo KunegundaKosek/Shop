@@ -53,4 +53,5 @@ Kunegunda Kosek
 Feel free to adjust the placeholder URL in the `git clone` command with the actual URL of your repository. Additionally, you can expand on the `features` or `technologies` sections if there are more specific details you would like to include.
 
 ## Images
+1. Home Page: The home page features a navigation bar, a welcome message, and buttons encouraging users to start shopping or log in (login functionality is not yet added).
 ![Home Page: The home page features a navigation bar, a welcome message, and buttons encouraging users to start shopping or log in (login functionality is not yet added).](src/assets/images/readme1.png)
