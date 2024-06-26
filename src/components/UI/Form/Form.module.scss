@@ -7,23 +7,23 @@
     align-items: center;
 
     &__cloud1 {
-        @include absolute-style-top-left(20px, 500px, 100px, 0.4);
+        @include absolute-style-top-left(20px, 500px, 50px, 0.4);
     }
 
     &__cloud2 {
-        @include absolute-style-top-rignt(50px, 200px, 150px, 0.4);
+        @include absolute-style-top-right(50px, 200px, 50px, 0.4);
     }
 
     &__cloud3 {
-        @include absolute-style-bottom-left(20px, 80px, 400px, 0.4);
+        @include absolute-style-bottom-left(20px, 80px, 50px, 0.4);
     }
 
     &__cloud4 {
-        @include absolute-style-top-left(200px, 20px, 100px, 0.4);
+        @include absolute-style-top-left(200px, 20px, 50px, 0.4);
     }
 
     &__cloud5 {
-        @include absolute-style-bottom-right(10px, 20px, 300px, 0.4);
+        @include absolute-style-bottom-right(10px, 20px, 50px, 0.4);
     }
 
     &__button {

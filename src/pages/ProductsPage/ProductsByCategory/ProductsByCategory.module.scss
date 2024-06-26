@@ -1,0 +1,11 @@
+@import '../../../assets/styles/mixins';
+@import '../../../assets/styles/variables';
+
+.button {
+    @include button-style();
+
+    @media screen and (max-width: 768px) {
+        font-size: $default-font-size - 5; 
+        padding: 10px;       
+    }
+}

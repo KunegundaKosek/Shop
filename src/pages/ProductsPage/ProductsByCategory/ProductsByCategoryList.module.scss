@@ -1,24 +1,43 @@
-.productsList {
+@import '../../../assets/styles/mixins';
+
+.productListPage {
     width: 80%;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-evenly;
     margin: 0 auto;
+    margin-top: 200px;
+
+    @media screen and (max-width: 768px) {
+        margin-top: 20px;
+    }
+
+    &__button {
+        @include button-style();
+    }
 }
 
 .card {
     margin: 15px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 300px;
+    height: auto;
 
 }
 
 .product {
-width: 30%;
+// width: 30%;
     &__images {
-        width: 200px;
+        width: 100px;
+        // height: 300px;
+        object-fit: cover;     /* Dopasowanie obrazu do kontenera */
+        object-position: center; 
     }
+}
+
+.productsListPage {
 }

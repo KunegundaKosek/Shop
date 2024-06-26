@@ -15,6 +15,10 @@
         text-align: center;
         outline: none;
 
+        @media screen and (max-width: 768px) {
+            margin-top: 0;
+        }
+
         &:focus {
             border: 2px solid $light-cloud-color-3;
         }

@@ -29,7 +29,7 @@
     width: $width;
 }
 
-@mixin absolute-style-top-rignt($top, $right, $width, $opacity) {
+@mixin absolute-style-top-right($top, $right, $width, $opacity) {
     position: absolute;
     top: $top;
     right: $right;

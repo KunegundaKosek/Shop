@@ -1,29 +1,53 @@
-import React, { useContext, useEffect } from 'react'
-import { ProductContext } from '../../../context/ProductContext'
+import React, { useContext, useEffect } from 'react';
+import { ProductContext } from '../../../context/ProductContext';
 import Card from '../../../components/UI/Card/Card';
+import classes from '../ProductsByCategory/ProductsByCategoryList.module.scss';
+import Button from '../../../components/UI/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
     order: string;
-}
+};
 
-const SortProductsByOrder = ({order}: Props) => {
+const SortProductsByOrder = ({ order }: Props) => {
+    const navigation = useNavigate();
 
     const { sortProductsByOrder, productsList } = useContext(ProductContext);
+
+    const handleClick = () => {
+        navigation('/shop');
+    };
 
     useEffect(() => {
         sortProductsByOrder(order);
     }, []);
 
-  return (
-    <div>
-        {productsList.map((product) => (
-            <Card key={product.id}>
-                <h1>{product.title}</h1>
-                <img src={product.images[0]} alt="" />
-            </Card>
-        ))}
-    </div>
-  )
-}
+    return (
+        <section className={classes.productListPage}>
+            <Button
+                className={classes.productListPage__button}
+                onClick={handleClick}
+            >
+                Powrót
+            </Button>
+            <ul className={classes.productsList}>
+                {productsList.map(product => (
+                    <li key={product.id} className={classes.product}>
+                        <Card className={classes.card}>
+                            <h3 className={classes.product__title}>
+                                {product.title}
+                            </h3>
+                            <img
+                                className={classes.product__images}
+                                src={product.images[0]}
+                                alt={product.title}
+                            />
+                        </Card>
+                    </li>
+                ))}
+            </ul>
+        </section>
+    );
+};
 
-export default SortProductsByOrder
+export default SortProductsByOrder;

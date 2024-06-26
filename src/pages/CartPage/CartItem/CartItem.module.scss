@@ -2,10 +2,8 @@
 @import '../../../assets/styles/mixins';
 
 .shopItem {
-    border: 2px solid black;
     display: flex;
     flex-direction: row;
-    // width: 80%;
 
     &__list {
         width: 80%;
@@ -14,6 +12,10 @@
 
     &__card {
 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
         &-titleProduct {}
 
         &-image {
@@ -21,7 +23,9 @@
             height: 100px;
         }
 
-        &-button {}
+    }
+    &__cart-button {
+        @include button-style();
     }
 
 

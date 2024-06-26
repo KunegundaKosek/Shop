@@ -1,0 +1,15 @@
+.cartPage {
+    margin-top: 150px;
+
+    @media screen and (max-width: 768px) {
+        margin-top: 20px;
+    }
+
+    &__title {
+        text-align: center;
+    }
+
+    &__price {
+        text-align: center;
+    }
+}
