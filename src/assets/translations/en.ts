@@ -40,5 +40,9 @@ export default {
         'app.emptyCart': 'Your shopping cart is empty',
         'app.cart': 'Your cart',
         'app.priceCart': 'Total value of the cart',
+        'app.deleteQuestion': 'Are you sure you want to delete?',
+        'app.yes': 'YES',
+        'app.no': 'NO',
+        'app.deleteFromCart': 'Delete from cart',
     },
 };

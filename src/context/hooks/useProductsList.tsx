@@ -29,7 +29,7 @@ export const useProductsList = () => {
 
             setProductsList(products);
         } catch (error) {
-            console.error('Fetch error:', error);
+            console.log(error);
         } finally {
             setLoading(false);
         }
@@ -92,13 +92,12 @@ export const useProductsList = () => {
 
             const product = await response.json();
 
-            console.log('Otrzymany produkt z API', product);
-
             setProductsList(prev => {
                 const updatedList = [product, ...prev];
-                console.log('Zaktualowana list produktów', updatedList);
                 return updatedList;
             });
+
+            console.log(productsList);
         } catch (error) {
             console.log(error);
         }
@@ -115,7 +114,6 @@ export const useProductsList = () => {
             const { products } = await response.json();
 
             setProductsList(products);
-            console.log(products);
         } catch (error) {
             console.log(error);
         }

@@ -22,22 +22,19 @@ type Props = {
 };
 
 const SingleProduct = ({ product, handleDelete, openModal }: Props) => {
+    const { t } = useTranslation();
+
     const [isOpenModal, setIsOpenModal] = useState(false);
     const dispatch = useDispatch();
 
     const handleAddToCart = () => {
         dispatch(addToCart(product, 1));
-        console.log('dodane do koszyka');
     };
 
     const handleClick = () => {
         setIsOpenModal(prev => !prev);
     };
 
-    const handleClose = () => {
-        setIsOpenModal(false);
-    };
-    const { t } = useTranslation();
     return (
         <>
             {isOpenModal && (
@@ -123,7 +120,6 @@ const SingleProduct = ({ product, handleDelete, openModal }: Props) => {
                     </div>
                 </Card>
             </li>
-            {/* ))} */}
         </>
     );
 };
