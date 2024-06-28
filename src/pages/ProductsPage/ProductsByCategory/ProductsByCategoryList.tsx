@@ -22,7 +22,6 @@ const ProductsByCategoryList = ({ category }: Props) => {
 
     useEffect(() => {
         getByCategory(category);
-        console.log(productsList);
     }, []);
     return (
         <section className={classes.productListPage}>

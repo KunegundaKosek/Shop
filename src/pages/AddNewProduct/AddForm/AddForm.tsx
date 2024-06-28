@@ -41,16 +41,6 @@ const AddForm = ({ product, handleChange, onSubmit }: Props) => {
                 onChange={handleChange}
             />
 
-            <Label htmlFor="desc">{t('app.description')}</Label>
-            <Input
-                className={classes['addProduct__form-input']}
-                type="text"
-                id="desc"
-                name="desc"
-                value={product.description}
-                onChange={handleChange}
-            />
-
             <Label htmlFor="price">{t('app.price')}</Label>
             <Input
                 className={classes['addProduct__form-input']}

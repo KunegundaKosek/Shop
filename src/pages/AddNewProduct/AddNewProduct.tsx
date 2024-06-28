@@ -36,10 +36,10 @@ const AddNewProduct = () => {
         e.preventDefault();
 
         await addProduct(newProduct);
-        await setProductsList(prev => [...prev, newProduct]);
+        // await setProductsList(prev => [...prev, newProduct]);
         console.log('dodano nowy produkt');
         console.log(productsList);
-        navigate('/sklep');
+        navigate('/shop');
     };
 
     return (

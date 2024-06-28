@@ -18,23 +18,26 @@ export type Props = {
 const ProductsList = ({
     handleDelete,
     productsList,
-    loading,
     updateProducts,
 }: Props) => {
     const { t } = useTranslation();
 
     const [isOpen, setIsOpen] = useState(false);
+
+    // do zarządzania stanem produktu
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const [editingProductId, setEditingProductId] = useState<number | null>(
         null
     );
 
+    // funkcja ustawiająca stan edytowanego produktu
     const openModal = (id: number) => {
         setIsOpen(true);
         setEditingProductId(id);
         const product = productsList.find(product => product.id === id);
         if (product) {
+            // dispatch to funkcja, któa wysyła akcję do reducera
             dispatch({ type: 'SET_TITLE', payload: product.title });
             dispatch({ type: 'SET_IMAGE', payload: product.images[0] });
             dispatch({ type: 'SET_PRICE', payload: product.price });
@@ -42,6 +45,8 @@ const ProductsList = ({
             dispatch({ type: 'SET_BRAND', payload: product.brand });
         }
     };
+
+    // resetuje stan
     const closeModal = () => {
         setIsOpen(false);
         setEditingProductId(null);

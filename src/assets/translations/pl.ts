@@ -40,5 +40,9 @@ export default {
         'app.emptyCart': 'Twój koszyk jest pusty',
         'app.cart': 'Twój koszyk',
         'app.priceCart': 'Łączna wartość koszyka',
+        'app.deleteQuestion': 'Czy napewno chcesz usunąć?',
+        'app.yes': 'TAK',
+        'app.no': 'NIE',
+        'app.deleteFromCart': 'Usuń z koszyka',
     },
 };
